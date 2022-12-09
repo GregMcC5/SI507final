@@ -31,6 +31,10 @@ These API require Keys to access. The documentation above provides details on ho
 
 These scripts organize the data into a navigable tree. A new tree is constructed for each address and are personalized to each user. The tree is composed of several levels of "stacked" class objects that hold each other in attributes. A the top level, a single RepTree class object is returned, which holds 4 GovLevel class objects (one for Federal, State, Local government levels, and one the user's whole state Congressional Delegation) in correpsonding attributes (self.federal, self.state, etc.). Each GovLevel object holds a list of officholders as Representative class objects (for officeholders who aren't Congress members), CongressPerson calss objects (a subclass of Reprsentative, used for members of Congress), or OtherCongressPerson (used for all members of Congress from the user's state). These class objects hold all the information related to a particular officeholder.
 
+While in the script this tree is held within classes, the final_project.py script also writes this tree as a JSON file. This JSON file is organized as a dictionary (corresponding to the RepTree object), with strings corresponding to the GovLevel objects as keys ("Federal", "State", "Local", "Other"). In each corresponding value, a list of dicitonaries is held corresponding to all the information available for that officeholder.
+
+This JSON file demonstrates the tree structure and can be used by the offline_final.py script to construct the tree of classes and interact with it.
+
  This structure is also discuss within the script, but can here is a visual design of it also:
 
                     ----------------------------------------------------------------------------------------------------
@@ -61,7 +65,43 @@ These scripts organize the data into a navigable tree. A new tree is constructed
                                 Individual Member of Congrsss Bibliographic Information and Financial Information (OtherCongressPerson objects)
                     ----------------------------------------------------------------------------------------------------
 
-## Running the Code
+## Data Fields
+
+Each Representative class object displays the following data field:
+ - Name
+ - Position/Officeheld
+ - Party
+ - Level (of government)
+ - Office Address
+ - Office Phone Number
+ - Website
+
+Additionally, the Representative object has a rep_dict field which holds the Google Civics API data for that officeholder, but does not display it. It also have os_id fields and financial_info fields that are NONE, but are used by the CongressPerson subclass
+
+Each CongressPerson class object displays the following data field:
+ - Name
+ - Position/Officeheld
+ - Party
+ - Level (of government)
+ - Office Address
+ - Office Phone Number
+ - Website
+ - Top Donors (Top ten list)
+ - Top Contributing Industries (Top ten list)
+
+Additionally, the CongressPerson object has a rep_dict field which holds the Google Civics API data for that officeholder, but does not display it. It also have os_id field, but only uses this piece of information internally to get financial data, which is held in self.contributors and self.industries. The top donor and top contributing industries data is held as lists of lists with each donating company/industry's name, total donated, total donated by individuals, and total donated by PACs
+
+Each OtherCongressPerson class object displays the following data field:
+ - Name
+ - Distric
+ - Party
+ - Level (of government)
+ - Top Donors (Top ten list)
+ - Top Contributing Industries (Top ten list)
+
+Additionally, the OtherCongressPerson object also has a os_id field, but only uses this piece of information internally to get financial data, which is held in self.contributors and self.industries. The top donor and top contributing industries data is held as lists of lists with each donating company/industry's name, total donated, total donated by individuals, and total donated by PACs 
+
+## Code Requirements
 
 This code requires a handful of non-standard Python libraries to use. These can all be installed with pip:
 
@@ -75,6 +115,23 @@ This code requires a handful of non-standard Python libraries to use. These can 
 
 
 When running the scripts, follow the prompts on entering an address or filename. Once in the tree, select the numbered options at each level. You can enter "Done" or "Back" at any point to navigate back "up" a level in the tree.
+
+## Instructions
+
+1. Launch the script from the Command Line with 'python3 final_project.py' or 'python3 offline_final.py'
+2. On the main menu, enter 1 to launch the program. You may also enter 2 to learn more, or 3 to exit.
+3. For final_project.py enter an address when prompted. Use the follow format:
+
+        {stree address}, {city}, {state} {ZIP}
+        500 S State St, Ann Arbor, MI 48109
+
+   OR for offline_final.py, enter the desired filename in the same directory with extension like the following:
+
+        MichiganTree.json
+
+4. Once your tree is loaded, view each menu's prompt and select a numbered option for a particular step "down" the tree. At any point, enter "done" or "back" to go back "up" the tree. Explore as much as you like. If choosing to graph or chart any data, a new browser window will open with your graph/chart.
+
+5. When done, return to the top of your tree (using "back" or "done") and select 0. This will end the program.
 
 ## Repository Inventory
 
