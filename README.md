@@ -118,7 +118,14 @@ When running the scripts, follow the prompts on entering an address or filename.
 
 ## Instructions
 
-1. Launch the script from the Command Line with 'python3 final_project.py' or 'python3 offline_final.py'
+1. Launch the script from the Command Line and navigate to the directory. Launch the script with one of the following commands:
+
+    python3 final_project.py
+
+    OR
+
+    python3 offline_final.py
+
 2. On the main menu, enter 1 to launch the program. You may also enter 2 to learn more, or 3 to exit.
 3. For final_project.py enter an address when prompted. Use the follow format:
 
