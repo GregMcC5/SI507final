@@ -3,6 +3,8 @@
 Gregory McCollum's final project for SI507 in Fall 2022 Semester.
 Contact Greg at gregmcc@umich.edu
 
+Last updated: December 9th, 2022
+
 ## Overview
 
 This project uses Python to help users learn more about the officeholders who represent them at various levels of government. It constructs a tree based on the user's input address and develop a navigable tree composed of data on the federal, state, and local officeholders that represents someone living at that address. With this tree the user can get more details on particular officeholders, and for member of US Congress, learn about what companies and industries are financially supporting those members of Congress. In addition to the user's House Representative and Senators, information is available on everyone in the Congressional Delegation from the user's state.
