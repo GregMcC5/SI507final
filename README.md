@@ -9,7 +9,7 @@ Last updated: December 9th, 2022
 
 This project uses Python to help users learn more about the officeholders who represent them at various levels of government. It constructs a tree based on the user's input address and develop a navigable tree composed of data on the federal, state, and local officeholders that represents someone living at that address. With this tree the user can get more details on particular officeholders, and for member of US Congress, learn about what companies and industries are financially supporting those members of Congress. In addition to the user's House Representative and Senators, information is available on everyone in the Congressional Delegation from the user's state.
 
-This final_project.py script constructs the user's tree on the basis of the address,  retrieves the data from APIs or from cached data, and allows user interaction with the tree. Th is script also writes the user's tree to a JSON file called YourTree.json.
+This final_project.py script constructs the user's tree on the basis of the address,  retrieves the data from APIs or from cached data, and allows user interaction with the tree. The is script also writes the user's tree to a JSON file called YourTree.json.
 
 The offline_final.py project constructs the user's tree from a JSON file (like the one developed by the main script), and then allows user interaction with the tree.
 
